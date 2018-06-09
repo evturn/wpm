@@ -2,7 +2,11 @@ import sys
 from argparse import ArgumentParser
 
 def validate_args(args):
-    print('Check out these arguments:', args)
+    if args.path is None:
+        msg = 'No filepath was supplied.'
+        print(f'{parser.prog}: {msg}', file=sys.stderr)
+        parser.print_help()
+        sys.exit()
 
 parser = ArgumentParser(
     prog='WPM',
