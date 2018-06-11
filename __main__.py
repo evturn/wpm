@@ -9,7 +9,10 @@ def validate_args(args):
         print(f'{argparser.prog}: {msg}', file=sys.stderr)
         parser.print_help()
         sys.exit()
+
     csvparser = CSVParser(args)
+    data = csvparser.parse()
+    print(data.wpm, data.count)
 
 argparser = ArgumentParser(
     prog='WPM',
