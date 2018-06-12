@@ -1,7 +1,7 @@
 import sys
 from argparse import ArgumentParser
 
-from core import CSVParser
+from core import Plotter
 
 def validate_args(args):
     if args.path is None:
@@ -10,9 +10,8 @@ def validate_args(args):
         parser.print_help()
         sys.exit()
 
-    csvparser = CSVParser(args)
-    data = csvparser.parse()
-    print(data.wpm, data.count)
+    plotter = Plotter(args)
+
 
 argparser = ArgumentParser(
     prog='WPM',

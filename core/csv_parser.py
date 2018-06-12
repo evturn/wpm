@@ -19,4 +19,4 @@ class CSVParser:
         self.acc = acc
         self.count = len(wpm)
 
-        return self
+        return wpm, acc, len(wpm)
