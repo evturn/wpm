@@ -9,3 +9,12 @@ class Plotter:
         self.count = count
 
         print(self.count)
+
+    def get_segment_count(self, percentage=.025):
+        items_per_segment = int(self.count * percentage)
+
+        if items_per_segment > 0:
+            return items_per_segment 
+        else:
+            return 1
+
