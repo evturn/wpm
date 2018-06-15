@@ -26,3 +26,22 @@ class Plotter:
             count += 1
         
         return list(range(1, count, segment_count))
+
+    def get_segmented_y_axis_values(self, item_values, segment_count, plot_values):
+        '''Returns a list containing the average of all values in each segment'''
+        unplotted_count = len(item_values)
+
+        if unplotted_count < segment_count:
+            segment_sum = sum(item_values) / unplotted_count
+            item_values = []
+        else:
+            segment_sum = sum(item_values[0:segment_count]) / segment_count
+            item_values = item_values[segment_count:]
+
+        plot_values.append(segment_sum)
+
+        if item_values:
+            return self.get_segmented_y_axis_values(item_values, segment_count, plot_values)
+        else:
+            return plot_values
+
