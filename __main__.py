@@ -1,6 +1,7 @@
 import sys
 from argparse import ArgumentParser
 
+from core import CSVParser
 from core import Plotter
 
 def validate_args(args):
@@ -10,8 +11,9 @@ def validate_args(args):
         parser.print_help()
         sys.exit()
 
-    plotter = Plotter(args)
-
+    csvparser = CSVParser(args)
+    w, a, c = csvparser.parse()
+    plotter = Plotter(count=c)
 
 argparser = ArgumentParser(
     prog='WPM',
