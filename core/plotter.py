@@ -1,16 +1,9 @@
-from core import CSVParser
-
 class Plotter:
-    def __init__(self, args):
-        csvparser = CSVParser(args)
-        wpm, acc, count = csvparser.parse()
-        self.wpm = wpm
-        self.acc = acc
+    def __init__(self, count=None):
         self.count = count
+        self.step = self.get_segmentation_step()
 
-        print(self.count)
-
-    def get_segment_count(self, percentage=.025):
+    def get_segmentation_step(self, percentage=.025):
         items_per_segment = int(self.count * percentage)
 
         if items_per_segment > 0:
@@ -18,30 +11,30 @@ class Plotter:
         else:
             return 1
 
-    def get_segmented_x_axis_values(self, count, segment_count):
+    def get_x_plots(self):
         '''Creates a list of where the points along x-axis will be plotted'''
-        quo, rem = divmod(count, segment_count)
+        stop = self.count
+        quo, rem = divmod(self.count, self.step)
 
         if rem:
-            count += 1
+            stop += 1
         
-        return list(range(1, count, segment_count))
+        return list(range(1, stop, self.step))
 
-    def get_segmented_y_axis_values(self, item_values, segment_count, plot_values):
+    def get_y_plots(self, data, plots=list()):
         '''Returns a list containing the average of all values in each segment'''
-        unplotted_count = len(item_values)
+        unplotted_count = len(data)
 
-        if unplotted_count < segment_count:
-            segment_sum = sum(item_values) / unplotted_count
-            item_values = []
+        if unplotted_count < self.step:
+            step_sum = sum(data) / unplotted_count
+            data = []
         else:
-            segment_sum = sum(item_values[0:segment_count]) / segment_count
-            item_values = item_values[segment_count:]
+            step_sum = sum(data[0:self.step]) / self.step
+            data = data[self.step:]
 
-        plot_values.append(segment_sum)
+        plots.append(step_sum)
 
-        if item_values:
-            return self.get_segmented_y_axis_values(item_values, segment_count, plot_values)
+        if data:
+            return self.get_y_plots(data, plots=plots)
         else:
-            return plot_values
-
+            return plots
