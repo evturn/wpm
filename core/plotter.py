@@ -38,3 +38,8 @@ class Plotter:
             return self.get_y_plots(data, plots=plots)
         else:
             return plots
+
+    def get_plots(self, data):
+        xs = self.get_x_plots()
+        ys = self.get_y_plots(data)
+        return xs, ys

@@ -14,6 +14,7 @@ def validate_args(args):
     csvparser = CSVParser(args)
     w, a, c = csvparser.parse()
     plotter = Plotter(count=c)
+    xs, ys = plotter.get_plots(w)
 
 argparser = ArgumentParser(
     prog='WPM',
