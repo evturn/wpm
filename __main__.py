@@ -3,11 +3,11 @@ from argparse import ArgumentParser
 
 from core import CSVParser
 from core import Plotter
+from core import Figure
 
 def validate_args(args):
     if args.path is None:
-        msg = 'No filepath was supplied.'
-        print(f'{argparser.prog}: {msg}', file=sys.stderr)
+        print(f'{argparser.prog}: No filepath was supplied.', file=sys.stderr)
         parser.print_help()
         sys.exit()
 
@@ -15,6 +15,7 @@ def validate_args(args):
     w, a, c = csvparser.parse()
     plotter = Plotter(count=c)
     xs, ys = plotter.get_plots(w)
+    figure = Figure(plotter)
 
 argparser = ArgumentParser(
     prog='WPM',
