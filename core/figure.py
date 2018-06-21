@@ -15,8 +15,11 @@ class Figure:
     def draw_axis_ticks(self):
         plt.ylim(65, 100)
 
-        plt.xticks(range(0, self.count, self.step))
+        x_locs = self.plotter.get_x_ticks()
+
+        plt.xticks(x_locs, rotation=35)
         plt.yticks(range(58, 101, 2), fontsize=10)
+
         plt.grid(axis='y',
                  which='both',
                  ls='--',

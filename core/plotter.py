@@ -43,3 +43,8 @@ class Plotter:
         xs = self.get_x_plots()
         ys = self.get_y_plots(data)
         return xs, ys
+
+    def get_x_ticks(self, percentage=.05):
+        stop = self.count + 1
+        step = self.get_segmentation_step(percentage=percentage)
+        return range(1, stop, step)
