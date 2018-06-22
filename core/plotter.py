@@ -1,3 +1,5 @@
+import numpy as np
+
 class Plotter:
     def __init__(self, count=None):
         self.count = count
@@ -45,6 +47,7 @@ class Plotter:
         return xs, ys
 
     def get_x_ticks(self, percentage=.05):
-        stop = self.count + 1
-        step = self.get_segmentation_step(percentage=percentage)
-        return range(1, stop, step)
+        tick_step = self.get_segmentation_step(percentage=percentage)
+        num = self.count / tick_step
+
+        return np.linspace(1, self.count, num, dtype=int)
