@@ -13,7 +13,7 @@ def validate_args(args):
     csvparser = CSVParser(args)
     w, a, c = csvparser.parse()
     figure = Figure(count=c)
-    figure.plot(w)
+    figure.plot(w, a)
 
 argparser = ArgumentParser(
     prog='WPM',

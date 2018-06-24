@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 
 from core import Plotter
+from core import Scatter
 
 class Figure:
     def __init__(self, count=None):
@@ -26,10 +27,13 @@ class Figure:
                  lw=.5,
                  c='midnightblue')
 
-    def plot(self, data):
+    def plot(self, data, pcts):
         xs, ys = self.plotter.get_plots(data)
 
         self.draw_axis_ticks()
+
+        scatterplot = Scatter(pcts)
+        scatterplot.scatter(data)
 
         plt.plot(xs,
                  ys,
