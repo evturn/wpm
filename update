@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# vim: ft=bash syntax=sh
+
+if [ -f *.zip ]; then
+  zipfile=$(ls *.zip)
+  unzip -o $zipfile
+  rm $zipfile
+  echo 'Finished'
+fi
