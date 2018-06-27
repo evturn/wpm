@@ -2,9 +2,24 @@
 
 # vim: ft=bash syntax=sh
 
+function askToShowGraph() {
+  if [ -f *.csv ]; then
+    csvfile=$(ls *.csv)
+
+    read -p 'Do you want to render an updated graph? (y/n) ' -n 1;
+
+    echo '';
+
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      python __main__.py -p $csvfile
+    fi
+  fi
+}
+
 if [ -f *.zip ]; then
   zipfile=$(ls *.zip)
   unzip -o $zipfile
   rm $zipfile
   echo 'Finished'
+  askToShowGraph 
 fi

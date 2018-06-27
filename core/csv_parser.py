@@ -2,7 +2,7 @@ import csv
 
 class CSVParser:
     def __init__(self, args):
-        self.csvfile = f'wpm/{args.path}'
+        self.csvfile = args.path
         self.count = 0
 
     def parse(self):
