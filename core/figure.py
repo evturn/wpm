@@ -19,12 +19,12 @@ class Figure:
         x_locs = self.plotter.get_x_ticks()
 
         plt.xticks(x_locs, rotation=35)
-        plt.yticks(range(58, 101, 2), fontsize=10)
+        plt.yticks(range(58, 103, 4), fontsize=10)
 
         plt.grid(axis='y',
                  which='both',
                  ls='--',
-                 lw=.5,
+                 lw=.75,
                  c='midnightblue')
 
     def plot(self, data, pcts):
@@ -32,8 +32,8 @@ class Figure:
 
         self.draw_axis_ticks()
 
-        scatterplot = Scatter(pcts)
-        scatterplot.scatter(data)
+        scatter = Scatter(pcts)
+        scatter.draw(data)
 
         plt.plot(xs,
                  ys,

@@ -7,7 +7,7 @@ class Scatter:
     def __init__(self, data):
         self.data = data
 
-    def scatter(self, y_data):
+    def draw(self, y_data):
         pc_count = len(self.data)
         pc_indices = np.arange(pc_count)
 
