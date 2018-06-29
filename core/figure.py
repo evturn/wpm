@@ -2,6 +2,7 @@ from matplotlib import pyplot as plt
 
 from core import Plotter
 from core import Scatter
+from core import Annotate
 
 class Figure:
     def __init__(self, count=None):
@@ -39,5 +40,7 @@ class Figure:
                  ys,
                  c='midnightblue',
                  linewidth=6)
+        annotate = Annotate(xs, ys)
+        annotate.draw()
 
         plt.show()
