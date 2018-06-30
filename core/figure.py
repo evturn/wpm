@@ -38,7 +38,7 @@ class Figure:
 
         plt.plot(xs,
                  ys,
-                 c='midnightblue',
+                 c='black',
                  linewidth=6)
         annotate = Annotate(xs, ys)
         annotate.draw()
