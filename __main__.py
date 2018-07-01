@@ -11,9 +11,9 @@ def validate_args(args):
         sys.exit()
 
     csvparser = CSVParser(args)
-    w, a, c = csvparser.parse()
-    figure = Figure(count=c)
-    figure.plot(w, a)
+    wpms, accuracies, dates, count = csvparser.parse()
+    figure = Figure(count=count)
+    figure.plot(wpms, accuracies)
 
 argparser = ArgumentParser(
     prog='WPM',
