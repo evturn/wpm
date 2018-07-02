@@ -12,20 +12,32 @@ class Annotate:
         for i in np.arange(self.plot_count):
             x = self.xs[i]
             y = int(self.ys[i])
-            if y > last_max or i == (self.plot_count - 1):
+            if y > last_max:
                 last_max = y
-                plt.annotate(s=str(y),
-                             xy=(x, y),
-                             xycoords='data',
-                             xytext=(x, y),
-                             textcoords='data',
-                             size=6.5,
-                             va='center',
-                             ha='center',
-                             bbox=dict(boxstyle="round4",
-                                       fc="white",
-                                       ec="navy",
-                                       lw="1.2")
-                             )
+                self.annotate(x, 
+                              y, 
+                              dict(boxstyle="round4",
+                                   fc="gold",
+                                   ec="midnightblue",
+                                   lw="1"),
+                              size=11)
+            else:
+                self.annotate(x, 
+                              y, 
+                              dict(boxstyle="round4",
+                                   fc="white",
+                                   ec="midnightblue",
+                                   lw="1"))
+
+    def annotate(self, x, y, bbox, size=7):
+        plt.annotate(s=str(y),
+                     xy=(x, y),
+                     xycoords='data',
+                     xytext=(x, y),
+                     textcoords='data',
+                     size=size,
+                     va='center',
+                     ha='center',
+                     bbox=bbox)
 
 
