@@ -39,4 +39,4 @@ class Scatter:
                         s=shape,
                         edgecolor=edge,
                         label=label)
-            plt.legend(loc=2)
+            plt.legend(loc=2, fontsize=13)
