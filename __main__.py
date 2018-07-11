@@ -12,7 +12,7 @@ def validate_args(args):
 
     csvparser = CSVParser(args)
     wpms, accuracies, dates, count = csvparser.parse()
-    figure = Figure(count=count)
+    figure = Figure(count=count, file=args.file)
     figure.plot(wpms, accuracies)
 
 argparser = ArgumentParser(
@@ -24,6 +24,12 @@ argparser.add_argument(
     '--path',
     dest='path',
     help='Relative path to the input file.'
+)
+argparser.add_argument(
+    '-s',
+    '--save',
+    dest='file',
+    help='Save to file.'
 )
 
 args = argparser.parse_args()

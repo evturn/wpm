@@ -5,12 +5,13 @@ from core import Scatter
 from core import Annotate
 
 class Figure:
-    def __init__(self, count=None):
+    def __init__(self, count=None, file=None):
         fig, ax = plt.subplots(dpi=128, figsize=(14,7))
         self.fig = fig
         self.ax = ax
 
         self.count = count
+        self.file = file
         self.plotter = Plotter(count=count)
         self.step = self.plotter.step
 
@@ -43,4 +44,12 @@ class Figure:
         annotate = Annotate(xs, ys)
         annotate.draw()
 
-        plt.show()
+        self.draw()
+
+    def draw(self):
+        if self.file:
+            plt.savefig(self.file)
+            print('File created: ' + self.file)
+        else:
+            plt.show()
+
