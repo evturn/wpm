@@ -28,6 +28,7 @@ class Figure:
                  ls='--',
                  lw=.75,
                  c='midnightblue')
+        plt.title(f'{self.plotter.step} tests per plot')
 
     def plot(self, data, pcts):
         xs, ys = self.plotter.get_plots(data)
