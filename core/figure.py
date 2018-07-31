@@ -21,7 +21,7 @@ class Figure:
         x_locs = self.plotter.get_x_ticks()
 
         plt.xticks(x_locs, rotation=35)
-        plt.yticks(range(58, 103, 4), fontsize=10)
+        plt.yticks(range(58, 111, 4), fontsize=10)
 
         plt.grid(axis='y',
                  which='both',
