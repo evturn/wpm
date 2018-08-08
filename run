@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# vim: ft=bash syntax=sh
+
+if [ -f *.csv ]; then
+  python __main__.py -p $(ls *.csv)
+else
+  echo 'No input file found.'
+fi
+
