@@ -28,7 +28,9 @@ class Figure:
                  ls='--',
                  lw=.75,
                  c='midnightblue')
-        plt.title(f'{self.plotter.step} tests per plot')
+
+        
+        plt.title(f'Average every {self.plotter.step} items\nTotal of {self.plotter.count} items')
 
     def plot(self, data, pcts):
         xs, ys = self.plotter.get_plots(data)
