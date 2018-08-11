@@ -1,8 +1,9 @@
 import numpy as np
 
 class Plotter:
-    def __init__(self, count=None):
+    def __init__(self, count=None, dates=None):
         self.count = count
+        self.dates = dates
         self.step = self.get_segmentation_step()
 
     def get_segmentation_step(self, percentage=.025):
@@ -44,7 +45,17 @@ class Plotter:
     def get_plots(self, data):
         xs = self.get_x_plots()
         ys = self.get_y_plots(data)
+
         return xs, ys
+
+    def formatDate(self, date):
+        year, month, day = date
+        return f'{month}/{day}'
+
+    def get_dates(self):
+        x_locs = self.get_x_ticks()
+        indices = [n - 1 for n in x_locs]
+        return [self.formatDate(self.dates[i]) for i in indices]
 
     def get_x_ticks(self, percentage=.05):
         tick_step = self.get_segmentation_step(percentage=percentage)
