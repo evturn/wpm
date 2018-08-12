@@ -5,22 +5,23 @@ from core import Scatter
 from core import Annotate
 
 class Figure:
-    def __init__(self, count=None, file=None):
+    def __init__(self, count=None, file=None, dates=None):
         fig, ax = plt.subplots(dpi=128, figsize=(14,7))
         self.fig = fig
         self.ax = ax
 
         self.count = count
         self.file = file
-        self.plotter = Plotter(count=count)
+        self.plotter = Plotter(count=count, dates=dates)
         self.step = self.plotter.step
 
     def draw_axis_ticks(self):
         plt.ylim(65, 100)
 
         x_locs = self.plotter.get_x_ticks()
+        x_dates = self.plotter.get_dates()
 
-        plt.xticks(x_locs, rotation=35)
+        plt.xticks(x_locs, x_dates, rotation=0)
         plt.yticks(range(58, 111, 4), fontsize=10)
 
         plt.grid(axis='y',
