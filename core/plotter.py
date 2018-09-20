@@ -61,4 +61,13 @@ class Plotter:
         tick_step = self.get_segmentation_step(percentage=percentage)
         num = self.count / tick_step
 
-        return np.linspace(1, self.count, num, dtype=int)
+        return np.linspace(1, self.count, dtype=int)
+
+    def get_y_wpms(self, data):
+        l = min(data)
+        h = max(data)
+        pad = int((h - l) * 0.05)
+        lo = l - pad
+        hi = h + pad
+
+        return lo, hi
