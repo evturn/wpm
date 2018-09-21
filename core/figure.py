@@ -15,14 +15,15 @@ class Figure:
         self.plotter = Plotter(count=count, dates=dates)
         self.step = self.plotter.step
 
-    def draw_axis_ticks(self):
-        plt.ylim(65, 100)
-
+    def draw_axis_ticks(self, data):
+        lo, hi = self.plotter.get_y_wpms(data)
         x_locs = self.plotter.get_x_ticks()
         x_dates = self.plotter.get_dates()
 
-        plt.xticks(x_locs, x_dates, rotation=0)
-        plt.yticks(range(58, 111, 4), fontsize=10)
+        plt.xticks(x_locs, x_dates, rotation=40, fontsize=7)
+        plt.yticks(range(lo, hi, 4), fontsize=10)
+
+        plt.ylim(lo, hi)
 
         plt.grid(axis='y',
                  which='both',
@@ -36,7 +37,7 @@ class Figure:
     def plot(self, data, pcts):
         xs, ys = self.plotter.get_plots(data)
 
-        self.draw_axis_ticks()
+        self.draw_axis_ticks(data)
 
         scatter = Scatter(pcts)
         scatter.draw(data)
