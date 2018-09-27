@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+import numpy as np
 
 from core import Plotter
 from core import Scatter
@@ -20,16 +21,18 @@ class Figure:
         x_locs = self.plotter.get_x_ticks()
         x_dates = self.plotter.get_dates()
 
-        plt.xticks(x_locs, x_dates, rotation=40, fontsize=7)
-        plt.yticks(range(lo, hi, 4), fontsize=10)
+        plt.xticks(x_locs, x_dates, rotation=40, fontsize=7, color='darkslategrey')
+        plt.yticks(range(lo, hi, 4), fontsize=10, color='slategrey')
 
         plt.ylim(lo, hi)
+        
+        plt.margins(x=0.01)
 
         plt.grid(axis='y',
                  which='both',
                  ls='--',
-                 lw=.75,
-                 c='midnightblue')
+                 lw=1,
+                 c='slategrey')
 
         
         plt.title(f'Average every {self.plotter.step} items\nTotal of {self.plotter.count} items')
@@ -52,6 +55,12 @@ class Figure:
         self.draw()
 
     def draw(self):
+        rect = self.fig.patch
+        rect.set_facecolor('black')
+
+        rect = self.ax.patch
+        rect.set_facecolor('black')
+
         if self.file:
             plt.savefig(self.file)
             print('File created: ' + self.file)
