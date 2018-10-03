@@ -30,7 +30,7 @@ class Annotate:
                                    lw="1"))
 
     def annotate(self, x, y, bbox, size=7):
-        plt.annotate(s=str(y),
+        plt.annotate(text=str(y),
                      xy=(x, y),
                      xycoords='data',
                      xytext=(x, y),
