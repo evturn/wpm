@@ -35,7 +35,7 @@ class Figure:
                  c='slategrey')
 
         
-        plt.title(f'Average every {self.plotter.step} items\nTotal of {self.plotter.count} items')
+        plt.title(f'Average every {self.plotter.step} items\nTotal of {self.plotter.count} items', color='slategrey')
 
     def plot(self, data, pcts):
         xs, ys = self.plotter.get_plots(data)
